@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday, Энхжин!</title>
+
+    <!-- === FONTS === -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES (THEME)
+           Change these to customize the look
+           =========================================== */
+        :root {
+            /* Colors — romantic rose, gold, and cream palette */
+            --bg-dark: #1a0f12;
+            --bg-rose: #2d1b20;
+            --bg-slide-alt: #231418;
+            --gold: #d4a574;
+            --gold-light: #e8c8a0;
+            --rose: #e8b4b8;
+            --rose-light: #f0d0d4;
+            --rose-gold: #e8c4b8;
+            --cream: #f5efe6;
+            --pink: #f0a8c4;
+            --deep-rose: #8b4060;
+            --blush: #d4a0a8;
+            --text-primary: #f5efe6;
+            --text-secondary: #c9b8b0;
+            --text-muted: #a09088;
+            --accent: #e8b4b8;
+            --accent-glow: rgba(232, 180, 184, 0.25);
+            --gold-glow: rgba(212, 165, 116, 0.3);
+
+            /* Typography — MUST use clamp() */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-script: 'Dancing Script', cursive;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --title-size: clamp(2rem, 6vw, 5rem);
+            --script-size: clamp(1.25rem, 3vw, 2.5rem);
+            --subtitle-size: clamp(0.875rem, 1.8vw, 1.25rem);
+            --h2-size: clamp(1.5rem, 4vw, 3rem);
+            --body-size: clamp(0.8rem, 1.5vw, 1.125rem);
+            --small-size: clamp(0.65rem, 1vw, 0.875rem);
+
+            /* Spacing */
+            --slide-padding: clamp(1.5rem, 4vw, 4rem);
+            --content-gap: clamp(0.75rem, 2vw, 2rem);
+            --element-gap: clamp(0.25rem, 1vw, 1rem);
+
+            /* Animation */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --duration-normal: 0.7s;
+            --duration-slow: 1.2s;
+        }
+
+        /* ===========================================
+           RESET & BASE
+           =========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===========================================
+           VIEWPORT FITTING: MANDATORY BASE STYLES
+           =========================================== */
+        html,
+        body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: hidden;
+            padding: var(--slide-padding);
+        }
+
+        :root {
+            --title-size: clamp(1.5rem, 5vw, 4rem);
+            --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+            --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+            --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+            --small-size: clamp(0.65rem, 1vw, 0.875rem);
+            --slide-padding: clamp(1rem, 4vw, 4rem);
+            --content-gap: clamp(0.5rem, 2vw, 2rem);
+            --element-gap: clamp(0.25rem, 1vw, 1rem);
+        }
+
+        .card,
+        .container,
+        .content-box {
+            max-width: min(90vw, 1000px);
+            max-height: min(80vh, 700px);
+        }
+
+        .feature-list,
+        .bullet-list {
+            gap: clamp(0.4rem, 1vh, 1rem);
+        }
+
+        .feature-list li,
+        .bullet-list li {
+            font-size: var(--body-size);
+            line-height: 1.4;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: clamp(0.5rem, 1.5vw, 1rem);
+        }
+
+        img,
+        .image-container {
+            max-width: 100%;
+            max-height: min(50vh, 400px);
+            object-fit: contain;
+        }
+
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 3vw, 2rem);
+                --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+                --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+                --h2-size: clamp(1rem, 3vw, 1.75rem);
+            }
+        }
+
+        @media (max-height: 600px) {
+            :root {
+                --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+                --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+                --title-size: clamp(1.1rem, 4vw, 2rem);
+                --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+            }
+
+            .nav-dots,
+            .keyboard-hint,
+            .decorative {
+                display: none;
+            }
+        }
+
+        @media (max-height: 500px) {
+            :root {
+                --slide-padding: clamp(0.4rem, 2vw, 1rem);
+                --title-size: clamp(1rem, 3.5vw, 1.5rem);
+                --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+                --body-size: clamp(0.65rem, 1vw, 0.85rem);
+            }
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                --title-size: clamp(1.25rem, 7vw, 2.5rem);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* ===========================================
+           THEME-SPECIFIC STYLES
+           =========================================== */
+        body {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-weight: 300;
+        }
+
+        /* === BACKGROUND GRADIENTS === */
+        .slide-cover {
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(232, 180, 184, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(139, 64, 96, 0.2) 0%, transparent 60%),
+                var(--bg-dark);
+        }
+
+        .slide-rose {
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(232, 180, 184, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 30%, rgba(212, 165, 116, 0.08) 0%, transparent 40%),
+                var(--bg-rose);
+        }
+
+        .slide-dark {
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(232, 180, 184, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 80%, rgba(212, 165, 116, 0.06) 0%, transparent 50%),
+                var(--bg-slide-alt);
+        }
+
+        .slide-gold {
+            background:
+                radial-gradient(ellipse at 50% 100%, rgba(212, 165, 116, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 20%, rgba(232, 180, 184, 0.08) 0%, transparent 40%),
+                var(--bg-rose);
+        }
+
+        /* === TYPOGRAPHY === */
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .script {
+            font-family: var(--font-script);
+            font-weight: 400;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+        }
+
+        .script-bold {
+            font-family: var(--font-script);
+            font-weight: 700;
+            color: var(--rose);
+        }
+
+        .gold-text {
+            color: var(--gold);
+        }
+
+        .rose-text {
+            color: var(--rose);
+        }
+
+        .cream-text {
+            color: var(--cream);
+        }
+
+        /* === DECORATIVE LINES === */
+        .divider {
+            width: clamp(40px, 8vw, 80px);
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--rose));
+            margin: var(--element-gap) 0;
+            border-radius: 1px;
+        }
+
+        .divider-center {
+            width: clamp(40px, 8vw, 80px);
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--rose));
+            margin: var(--element-gap) auto;
+            border-radius: 1px;
+        }
+
+        /* === DECORATIVE ORNAMENT === */
+        .ornament {
+            font-family: var(--font-script);
+            font-size: var(--script-size);
+            color: var(--gold);
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        /* === HEART DECORATION === */
+        .heart-deco {
+            display: inline-block;
+            color: var(--rose);
+            font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes heartPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+        }
+
+        /* === GOLDEN SPARKLE === */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--gold-glow), 0 0 12px var(--gold-glow);
+            pointer-events: none;
+            animation: sparkleFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes sparkleFloat {
+            0%,
+            100% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-30px) scale(1);
+            }
+        }
+
+        /* ===========================================
+           ANIMATIONS — Entrance via .visible class
+           =========================================== */
+
+        /* Fade + Slide Up (standard reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition:
+                opacity var(--duration-normal) var(--ease-out-expo),
+                transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delays */
+        .reveal:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        .reveal:nth-child(2) {
+            transition-delay: 0.25s;
+        }
+        .reveal:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+        .reveal:nth-child(4) {
+            transition-delay: 0.55s;
+        }
+        .reveal:nth-child(5) {
+            transition-delay: 0.7s;
+        }
+        .reveal:nth-child(6) {
+            transition-delay: 0.85s;
+        }
+
+        /* Scale In (for important single elements) */
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition:
+                opacity 0.8s var(--ease-out-expo),
+                transform 0.8s var(--ease-spring);
+        }
+
+        .slide.visible .reveal-scale {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Blur In (for romantic, dreamy feel) */
+        .reveal-blur {
+            opacity: 0;
+            filter: blur(8px);
+            transform: translateY(10px);
+            transition:
+                opacity var(--duration-slow) var(--ease-out-expo),
+                filter var(--duration-slow) var(--ease-out-expo),
+                transform var(--duration-slow) var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal-blur {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        .reveal-blur:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        .reveal-blur:nth-child(2) {
+            transition-delay: 0.5s;
+        }
+        .reveal-blur:nth-child(3) {
+            transition-delay: 0.8s;
+        }
+
+        /* Slide from left (for decorative elements) */
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition:
+                opacity 0.6s var(--ease-out-expo),
+                transform 0.6s var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal-left {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Slide from right */
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition:
+                opacity 0.6s var(--ease-out-expo),
+                transform 0.6s var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===========================================
+           COVER SLIDE
+           =========================================== */
+        .slide-cover {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .slide-cover .slide-content {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: var(--content-gap);
+            z-index: 2;
+        }
+
+        .cover-subtitle {
+            font-family: var(--font-script);
+            font-size: var(--script-size);
+            color: var(--gold-light);
+            opacity: 0.8;
+        }
+
+        .cover-title {
+            font-size: var(--title-size);
+            color: var(--cream);
+            line-height: 1.15;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cover-title .highlight {
+            color: var(--rose);
+            display: block;
+            margin-top: clamp(0.25rem, 1vh, 0.5rem);
+        }
+
+        .cover-date {
+            font-size: var(--subtitle-size);
+            color: var(--text-secondary);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .cover-ornament {
+            font-size: clamp(1.5rem, 3vw, 3rem);
+            opacity: 0.6;
+        }
+
+        /* === COVER CONFETTI CANVAS === */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ===========================================
+           FLOATING HEARTS CONTAINER
+           =========================================== */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            bottom: -20px;
+            font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+            opacity: 0;
+            animation: heartRise linear infinite;
+            color: var(--rose);
+        }
+
+        @keyframes heartRise {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* ===========================================
+           SLIDE 2 — TO THE GIRL...
+           =========================================== */
+        .slide-intro .slide-content {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: var(--content-gap);
+        }
+
+        .intro-greeting {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+            font-style: italic;
+            color: var(--rose);
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .intro-message {
+            max-width: min(70ch, 85vw);
+            font-size: var(--body-size);
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .intro-signoff {
+            font-family: var(--font-script);
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+            color: var(--gold);
+        }
+
+        /* === DECORATIVE CIRCLE === */
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(232, 180, 184, 0.1);
+            pointer-events: none;
+        }
+
+        .deco-circle-1 {
+            width: clamp(200px, 40vw, 500px);
+            height: clamp(200px, 40vw, 500px);
+            top: -10%;
+            right: -10%;
+            border-color: rgba(212, 165, 116, 0.08);
+        }
+
+        .deco-circle-2 {
+            width: clamp(150px, 30vw, 350px);
+            height: clamp(150px, 30vw, 350px);
+            bottom: -5%;
+            left: -5%;
+            border-color: rgba(232, 180, 184, 0.06);
+        }
+
+        /* ===========================================
+           SLIDE 3 — DISTANCE
+           =========================================== */
+        .slide-distance .slide-content {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: var(--content-gap);
+        }
+
+        .distance-quote {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 3vw, 2.5rem);
+            font-style: italic;
+            color: var(--cream);
+            line-height: 1.4;
+            max-width: min(80vw, 700px);
+            font-weight: 400;
+        }
+
+        .distance-quote .highlight-word {
+            color: var(--rose);
+        }
+
+        .distance-message {
+            max-width: min(65ch, 80vw);
+            font-size: var(--body-size);
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* === PULSING HEART (big) === */
+        .big-heart {
+            font-size: clamp(2rem, 5vw, 4rem);
+            animation: bigHeartPulse 1.5s ease-in-out infinite;
+            display: inline-block;
+            color: var(--rose);
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        @keyframes bigHeartPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 20px var(--accent-glow);
+            }
+            50% {
+                transform: scale(1.15);
+                text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent-glow);
+            }
+        }
+
+        /* === DISTANCE LINE (decorative) === */
+        .distance-line {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.5rem, 2vw, 1.5rem);
+            opacity: 0.5;
+        }
+
+        .distance-line .line {
+            width: clamp(30px, 6vw, 80px);
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .distance-line .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--rose);
+            border-radius: 50%;
+        }
+
+        /* ===========================================
+           SLIDE 6 — BIRTHDAY WISHES
+           =========================================== */
+        .slide-wishes .slide-content {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: var(--content-gap);
+        }
+
+        .wishes-title {
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            color: var(--cream);
+        }
+
+        .wishes-list {
+            list-style: none;
+            max-width: min(70ch, 85vw);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.4rem, 1vh, 0.9rem);
+        }
+
+        .wishes-list li {
+            font-size: var(--body-size);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding-left: clamp(1.2rem, 2vw, 1.8rem);
+            position: relative;
+            font-weight: 300;
+        }
+
+        .wishes-list li::before {
+            content: '♥';
+            position: absolute;
+            left: 0;
+            color: var(--rose);
+            font-size: clamp(0.6rem, 0.9vw, 0.8rem);
+            top: 0.2em;
+        }
+
+        /* === CANDLE DECORATION === */
+        .candle-row {
+            display: flex;
+            gap: clamp(0.3rem, 0.8vw, 0.6rem);
+            justify-content: center;
+            margin-bottom: var(--element-gap);
+        }
+
+        .candle {
+            width: clamp(6px, 0.8vw, 10px);
+            height: clamp(20px, 3vh, 35px);
+            background: linear-gradient(180deg, var(--pink), var(--deep-rose));
+            border-radius: 3px 3px 1px 1px;
+            position: relative;
+        }
+
+        .candle .flame {
+            position: absolute;
+            top: calc(-1 * clamp(8px, 1.2vh, 14px));
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(5px, 0.7vw, 9px);
+            height: clamp(8px, 1.2vh, 14px);
+            background: radial-gradient(ellipse at center, #ffd700, #ff8c00, transparent);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flameFlicker 1.5s ease-in-out infinite alternate;
+        }
+
+        .candle .flame::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 50%;
+        }
+
+        @keyframes flameFlicker {
+            0% {
+                transform: translateX(-50%) scale(1) rotate(-2deg);
+            }
+            25% {
+                transform: translateX(-50%) scale(1.1, 0.9) rotate(1deg);
+            }
+            50% {
+                transform: translateX(-50%) scale(0.95, 1.05) rotate(-1deg);
+            }
+            75% {
+                transform: translateX(-50%) scale(1.05, 0.95) rotate(2deg);
+            }
+            100% {
+                transform: translateX(-50%) scale(1) rotate(0deg);
+            }
+        }
+
+        /* ===========================================
+           SLIDE 6 — CLOSING
+           =========================================== */
+        .slide-closing .slide-content {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: var(--content-gap);
+        }
+
+        .closing-message {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3.5vw, 3rem);
+            font-style: italic;
+            color: var(--cream);
+            line-height: 1.4;
+            max-width: min(80vw, 650px);
+            font-weight: 400;
+        }
+
+        .closing-signoff {
+            font-family: var(--font-script);
+            font-size: clamp(1.5rem, 3.5vw, 3rem);
+            color: var(--gold-light);
+        }
+
+        .closing-hearts {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            letter-spacing: 0.3em;
+            animation: heartFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes heartFloat {
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        /* ===========================================
+           LETTER / ENVELOPE ANIMATION
+           =========================================== */
+        .slide-letter .slide-content {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: var(--content-gap);
+            overflow: visible;
+        }
+
+        .letter-label {
+            font-family: var(--font-script);
+            font-size: var(--script-size);
+            color: var(--gold-light);
+            opacity: 0;
+            transition: opacity 1s ease 0.2s;
+        }
+
+        .slide.visible .letter-label {
+            opacity: 0.8;
+        }
+
+        /* ===========================================
+           SELF-WRITING LOVE LETTER
+           =========================================== */
+
+        /* The letter paper card */
+        .letter-paper {
+            position: relative;
+            width: min(clamp(280px, 65vw, 520px), 90vw);
+            max-height: min(70vh, 500px);
+            background: linear-gradient(170deg, #fcf9f4 0%, #f5efe6 30%, #f0e8dc 100%);
+            border-radius: 6px;
+            padding: clamp(1rem, 2.5vw, 2rem);
+            box-shadow:
+                0 4px 30px rgba(0, 0, 0, 0.25),
+                0 1px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            overflow: hidden;
+            margin: 0 auto;
+            /* Initial hidden state for reveal-scale animation */
+        }
+
+        /* Subtle paper texture overlay */
+        .letter-paper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139, 119, 90, 0.015) 2px,
+                    rgba(139, 119, 90, 0.015) 3px
+                );
+            pointer-events: none;
+            border-radius: 6px;
+        }
+
+        /* Decorative border inside the paper */
+        .letter-paper::after {
+            content: '';
+            position: absolute;
+            top: clamp(6px, 1vw, 12px);
+            left: clamp(6px, 1vw, 12px);
+            right: clamp(6px, 1vw, 12px);
+            bottom: clamp(6px, 1vw, 12px);
+            border: 1px solid rgba(212, 165, 116, 0.25);
+            border-radius: 3px;
+            pointer-events: none;
+        }
+
+        /* Heart watermark on paper */
+        .letter-watermark {
+            position: absolute;
+            bottom: clamp(0.5rem, 2vw, 1.5rem);
+            right: clamp(0.5rem, 2vw, 1.5rem);
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: var(--rose);
+            opacity: 0.06;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        /* The typewriter text area */
+        .typewriter-area {
+            position: relative;
+            height: 100%;
+            min-height: clamp(120px, 30vh, 280px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .typewriter-text {
+            font-family: var(--font-script);
+            font-size: clamp(0.9rem, 2.2vw, 1.5rem);
+            color: #3d2b1f;
+            line-height: 1.7;
+            font-weight: 400;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: left;
+        }
+
+        .typewriter-text .ink-heart {
+            font-size: clamp(1rem, 2.5vw, 1.8rem);
+            color: var(--deep-rose);
+        }
+
+        /* Blinking cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 2px;
+            height: clamp(0.9rem, 2.2vw, 1.5rem);
+            background: var(--deep-rose);
+            margin-left: 2px;
+            vertical-align: text-bottom;
+            animation: cursorBlink 0.8s step-end infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .typewriter-cursor.active {
+            opacity: 1;
+        }
+
+        .typewriter-cursor.done {
+            animation: cursorBlink 1.5s step-end infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ===========================================
+           POLAROID MEMORY WALL
+           =========================================== */
+        .slide-memories .slide-content {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: var(--content-gap);
+            overflow: visible;
+        }
+
+        .memories-title {
+            font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+            color: var(--cream);
+            font-family: var(--font-display);
+        }
+
+        .polaroid-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: clamp(0.6rem, 1.5vw, 1.2rem);
+            max-width: min(90vw, 750px);
+            margin: 0 auto;
+        }
+
+        .polaroid {
+            width: clamp(130px, 22vw, 200px);
+            background: #f5f0eb;
+            padding: clamp(6px, 1vw, 10px) clamp(6px, 1vw, 10px) clamp(16px, 2.5vw, 28px) clamp(6px, 1vw, 10px);
+            border-radius: 2px;
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.15),
+                0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: all 0.7s var(--ease-out-expo);
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05) !important;
+            z-index: 10;
+        }
+
+        /* Entrance — each comes from a different direction */
+        .polaroid.reveal-left {
+            opacity: 0;
+            transform: translateX(-50px) rotate(-6deg);
+        }
+
+        .polaroid.reveal-right {
+            opacity: 0;
+            transform: translateX(50px) rotate(6deg);
+        }
+
+        .polaroid.reveal-scale {
+            opacity: 0;
+            transform: scale(0.5) rotate(3deg);
+        }
+
+        /* Visible state — all fade in and settle into a slight tilt */
+        .slide.visible .polaroid { opacity: 1; transform: rotate(0deg); }
+        .slide.visible .polaroid-1 { transform: rotate(-2deg); }
+        .slide.visible .polaroid-2 { transform: rotate(1deg); }
+        .slide.visible .polaroid-3 { transform: rotate(-1deg); }
+
+        .polaroid-photo-3 {
+            background: linear-gradient(135deg, #e8b4b8, #d49098, #c07078);
+        }
+
+        .polaroid-caption {
+            font-family: var(--font-script);
+            font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+            color: #5a4a3a;
+            text-align: center;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+        /* ===========================================
+           PROGRESS BAR
+           =========================================== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .progress-bar .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--gold), var(--rose), var(--pink));
+            transition: width 0.3s ease;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* ===========================================
+           NAVIGATION DOTS
+           =========================================== */
+        .nav-dots {
+            position: fixed;
+            right: clamp(0.75rem, 2vw, 1.5rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.4rem, 0.8vw, 0.7rem);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: clamp(6px, 0.6vw, 10px);
+            height: clamp(6px, 0.6vw, 10px);
+            border-radius: 50%;
+            border: 1.5px solid rgba(232, 180, 184, 0.4);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out-expo);
+            padding: 0;
+        }
+
+        .nav-dot.active {
+            background: var(--rose);
+            border-color: var(--rose);
+            box-shadow: 0 0 10px var(--accent-glow);
+            transform: scale(1.3);
+        }
+
+        .nav-dot:hover {
+            border-color: var(--gold);
+            transform: scale(1.2);
+        }
+
+        /* ===========================================
+           KEYBOARD HINT
+           =========================================== */
+        .keyboard-hint {
+            position: fixed;
+            bottom: clamp(0.75rem, 2vh, 1.5rem);
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(0.55rem, 0.8vw, 0.7rem);
+            color: var(--text-muted);
+            opacity: 0.4;
+            z-index: 1000;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .keyboard-hint.hidden {
+            opacity: 0;
+        }
+
+        /* ===========================================
+           SLIDE LABEL (slide number)
+           =========================================== */
+        .slide-label {
+            position: absolute;
+            bottom: clamp(0.75rem, 2vh, 1.5rem);
+            right: clamp(1rem, 3vw, 2.5rem);
+            font-size: clamp(0.6rem, 0.8vw, 0.75rem);
+            color: var(--text-muted);
+            opacity: 0.3;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            z-index: 5;
+        }
+
+        /* ===========================================
+           RESPONSIVE OVERRIDES
+           =========================================== */
+        @media (max-width: 600px) {
+            .nav-dots {
+                right: clamp(0.4rem, 2vw, 0.75rem);
+            }
+
+            .slide-label {
+                display: none;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .candle-row {
+                display: none;
+            }
+
+            .distance-line {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === CONFETTI CANVAS (on cover only) === -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- === FLOATING HEARTS BACKGROUND === -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- === PROGRESS BAR === -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- === NAVIGATION DOTS === -->
+    <nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+
+    <!-- === KEYBOARD HINT === -->
+    <div class="keyboard-hint" id="keyboardHint">Arrow Keys &middot; Space &middot; Scroll</div>
+
+    <!-- =============================================
+    SLIDE 1 — COVER
+    ============================================= -->
+    <section class="slide slide-cover" id="slide-0">
+        <div class="slide-content">
+            <div class="cover-ornament reveal-scale">&#10087;</div>
+            <p class="cover-subtitle reveal-blur">Happy Birthday, my love</p>
+            <h1 class="cover-title reveal">
+                <span>Энхжин</span>
+                <span class="highlight">&#9829;</span>
+            </h1>
+            <div class="divider-center reveal"></div>
+            <p class="cover-date reveal">June 17, 2026</p>
+        </div>
+        <span class="slide-label">01 / 07</span>
+    </section>
+
+    <!-- =============================================
+    SLIDE 2 — A LETTER FOR YOU
+    ============================================= -->
+    <section class="slide slide-dark slide-letter" id="slide-1">
+        <div class="slide-content">
+            <p class="letter-label reveal">A letter for you...</p>
+
+            <div class="letter-paper reveal-scale" style="transition-delay: 0.4s;">
+                <div class="letter-watermark">&#9829;</div>
+                <div class="typewriter-area">
+                    <div class="typewriter-text" id="typewriterText"></div>
+                    <span class="typewriter-cursor" id="typewriterCursor"></span>
+                </div>
+            </div>
+        </div>
+        <span class="slide-label">02 / 07</span>
+    </section>
+
+    <!-- =============================================
+    SLIDE 3 — TO THE GIRL WHO HAS MY HEART
+    ============================================= -->
+    <section class="slide slide-rose slide-intro" id="slide-2">
+        <div class="deco-circle deco-circle-1"></div>
+        <div class="deco-circle deco-circle-2"></div>
+        <div class="slide-content">
+            <p class="ornament reveal">&#10087;</p>
+            <h2 class="intro-greeting reveal">To the girl who has my heart</h2>
+            <div class="divider-center reveal"></div>
+            <p class="intro-message reveal">
+                From the moment you came into my life, everything became brighter.
+                Every laugh we've shared, every conversation that stretched into the early hours,
+                every thought of you &mdash; they all remind me how incredibly lucky I am.
+                Even though miles stretch between us, you've never been far from my heart.
+            </p>
+            <p class="intro-signoff reveal">My love for you grows stronger every day</p>
+        </div>
+        <span class="slide-label">03 / 07</span>
+    </section>
+
+    <!-- =============================================
+    SLIDE 4 — DISTANCE
+    ============================================= -->
+    <section class="slide slide-dark slide-distance" id="slide-3">
+        <div class="slide-content">
+            <div class="big-heart reveal-scale">&#9829;</div>
+            <blockquote class="distance-quote reveal">
+                "Distance means so little
+                <br />
+                when <span class="highlight-word">someone</span> means so much."
+            </blockquote>
+            <div class="distance-line reveal">
+                <span class="line"></span>
+                <span class="dot"></span>
+                <span>&#9829;</span>
+                <span class="dot"></span>
+                <span class="line"></span>
+            </div>
+            <p class="distance-message reveal">
+                Every morning I wake up wishing you were beside me.
+                Every night I fall asleep with you on my mind.
+                The kilometers between us are just numbers &mdash;
+                they could never measure what we share.
+                Until the day we're together again, know that
+                <span class="rose-text">you are always with me</span>.
+            </p>
+        </div>
+        <span class="slide-label">04 / 07</span>
+    </section>
+
+    <!-- =============================================
+    SLIDE 5 — MEMORIES
+    ============================================= -->
+    <section class="slide slide-rose slide-memories" id="slide-4">
+        <div class="slide-content">
+            <p class="ornament reveal">&#10087;</p>
+            <h2 class="memories-title reveal">Our Memories</h2>
+            <div class="divider-center reveal"></div>
+
+            <div class="polaroid-grid">
+                <div class="polaroid polaroid-1 reveal-left" style="transition-delay: 0.3s;">
+                    <div class="polaroid-photo polaroid-photo-1"></div>
+                    <p class="polaroid-caption">The moment we met</p>
+                </div>
+
+                <div class="polaroid polaroid-2 reveal-scale" style="transition-delay: 0.5s;">
+                    <div class="polaroid-photo polaroid-photo-2"></div>
+                    <p class="polaroid-caption">Every call, every laugh</p>
+                </div>
+
+                <div class="polaroid polaroid-3 reveal-right" style="transition-delay: 0.7s;">
+                    <div class="polaroid-photo polaroid-photo-3"></div>
+                    <p class="polaroid-caption">You &amp; me, always</p>
+                </div>
+            </div>
+        </div>
+        <span class="slide-label">05 / 07</span>
+    </section>
+
+    <!-- =============================================
+    SLIDE 6 — BIRTHDAY WISHES
+    ============================================= -->
+    <section class="slide slide-gold slide-wishes" id="slide-5">
+        <div class="slide-content">
+            <!-- Candles -->
+            <div class="candle-row reveal">
+                <div class="candle"><div class="flame"></div></div>
+                <div class="candle"><div class="flame"></div></div>
+                <div class="candle"><div class="flame"></div></div>
+                <div class="candle"><div class="flame"></div></div>
+                <div class="candle"><div class="flame"></div></div>
+            </div>
+
+            <p class="ornament reveal">&#10087;</p>
+            <h2 class="wishes-title reveal">Happy Birthday, Энхжин</h2>
+            <div class="divider-center reveal"></div>
+
+            <ul class="wishes-list reveal">
+                <li>I wish you a year filled with as much <span class="rose-text">joy</span> as you've given me</li>
+                <li>I wish you <span class="gold-text">dreams</span> that come true and adventures that take your breath away</li>
+                <li>I wish you <span class="rose-text">love</span> that surrounds you every single day</li>
+                <li>I wish you knew how <span class="gold-text">beautiful</span> you are &mdash; inside and out</li>
+                <li>And I wish that next year, I'll be right there beside you to celebrate</li>
+            </ul>
+        </div>
+        <span class="slide-label">06 / 07</span>
+    </section>
+
+    <!-- =============================================
+    SLIDE 7 — CLOSING
+    ============================================= -->
+    <section class="slide slide-dark slide-closing" id="slide-6">
+        <div class="slide-content">
+            <p class="closing-hearts reveal-scale">&#9829; &#9829; &#9829;</p>
+            <p class="closing-message reveal">
+                One day, the distance will be just a memory.
+                Until then, I'll carry you with me
+                <span class="rose-text">every step of the way</span>.
+            </p>
+            <div class="divider-center reveal"></div>
+            <p class="closing-message reveal" style="font-size: clamp(1.1rem, 2.5vw, 1.8rem); font-style: normal;">
+                Happy Birthday, my love.
+            </p>
+            <p class="closing-signoff reveal">With all my love,</p>
+            <p class="closing-signoff reveal" style="font-size: clamp(1.8rem, 4vw, 3.5rem); color: var(--rose);">Ганболд</p>
+        </div>
+        <span class="slide-label">07 / 07</span>
+    </section>
+
+    <script>
+        /* ===========================================
+           CONFETTI PARTICLE SYSTEM
+           Runs on the cover slide only.
+           =========================================== */
+        (function() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let animationId = null;
+            let isRunning = false;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            class ConfettiParticle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height - canvas.height;
+                    this.size = Math.random() * 8 + 4;
+                    this.speedY = Math.random() * 2 + 1.5;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.rotation = Math.random() * 360;
+                    this.rotationSpeed = Math.random() * 4 - 2;
+                    this.opacity = Math.random() * 0.6 + 0.4;
+                    this.color = ['#e8b4b8', '#d4a574', '#f0a8c4', '#e8c8a0', '#f5efe6', '#f0d0d4'][
+                        Math.floor(Math.random() * 6)
+                    ];
+                    this.sway = Math.random() * 20 + 10;
+                    this.swaySpeed = Math.random() * 0.02 + 0.01;
+                    this.swayOffset = Math.random() * Math.PI * 2;
+                }
+
+                update() {
+                    this.y += this.speedY;
+                    this.x += this.speedX + Math.sin(this.swayOffset) * 0.3;
+                    this.swayOffset += this.swaySpeed;
+                    this.rotation += this.rotationSpeed;
+
+                    if (this.y > canvas.height + 20) {
+                        this.y = -20;
+                        this.x = Math.random() * canvas.width;
+                        this.speedY = Math.random() * 2 + 1.5;
+                    }
+
+                    if (this.x < -20) this.x = canvas.width + 20;
+                    if (this.x > canvas.width + 20) this.x = -20;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate((this.rotation * Math.PI) / 180);
+                    ctx.globalAlpha = this.opacity;
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(-this.size / 2, -this.size / 4, this.size, this.size / 2);
+                    ctx.restore();
+                }
+            }
+
+            function initConfetti(count) {
+                particles = [];
+                for (let i = 0; i < count; i++) {
+                    const p = new ConfettiParticle();
+                    p.y = Math.random() * canvas.height;
+                    particles.push(p);
+                }
+            }
+
+            function animateConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (const p of particles) {
+                    p.update();
+                    p.draw();
+                }
+                animationId = requestAnimationFrame(animateConfetti);
+            }
+
+            // Check visibility of cover slide to toggle confetti
+            const coverSlide = document.getElementById('slide-0');
+            const observer = new IntersectionObserver((entries) => {
+                for (const entry of entries) {
+                    if (entry.isIntersecting) {
+                        if (!isRunning) {
+                            initConfetti(80);
+                            animateConfetti();
+                            isRunning = true;
+                        }
+                    } else {
+                        if (isRunning) {
+                            cancelAnimationFrame(animationId);
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            isRunning = false;
+                            particles = [];
+                        }
+                    }
+                }
+            }, { threshold: 0.1 });
+
+            observer.observe(coverSlide);
+
+            // Start initial confetti
+            initConfetti(80);
+            animateConfetti();
+            isRunning = true;
+        })();
+
+        /* ===========================================
+           FLOATING HEARTS BACKGROUND
+           =========================================== */
+        (function() {
+            const container = document.getElementById('heartsContainer');
+            const heartSymbols = ['♥', '♡', '♥', '♡', '♥'];
+            const colors = ['#e8b4b8', '#d4a574', '#f0a8c4', '#e8c8a0', '#f0d0d4'];
+
+            function createHeart() {
+                const heart = document.createElement('span');
+                heart.className = 'floating-heart';
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 1.2 + 0.6) + 'rem';
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                heart.style.animationDelay = '0s';
+                container.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 16000);
+            }
+
+            // Create hearts periodically
+            setInterval(createHeart, 600);
+            // Initial burst
+            for (let i = 0; i < 8; i++) {
+                setTimeout(createHeart, i * 200);
+            }
+        })();
+
+        /* ===========================================
+           SLIDE PRESENTATION CONTROLLER
+           =========================================== */
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.totalSlides = this.slides.length;
+                this.currentIndex = 0;
+                this.isScrolling = false;
+
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupWheelNav();
+                this.setupProgressBar();
+                this.setupNavDots();
+                this.setupHashNav();
+                this.hideHintOnInteraction();
+            }
+
+            /* --- Intersection Observer for animations --- */
+            setupIntersectionObserver() {
+                const options = {
+                    threshold: 0.3,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    for (const entry of entries) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            this.currentIndex = Array.from(this.slides).indexOf(entry.target);
+                            this.updateNavDots();
+                            this.updateProgressBar();
+                        }
+                    }
+                }, options);
+
+                for (const slide of this.slides) {
+                    observer.observe(slide);
+                    // Mark first slide visible initially
+                    if (slide === this.slides[0]) {
+                        slide.classList.add('visible');
+                    }
+                }
+            }
+
+            /* --- Keyboard navigation --- */
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                        e.preventDefault();
+                        this.nextSlide();
+                    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        this.prevSlide();
+                    } else if (e.key === 'Home') {
+                        e.preventDefault();
+                        this.goToSlide(0);
+                    } else if (e.key === 'End') {
+                        e.preventDefault();
+                        this.goToSlide(this.totalSlides - 1);
+                    }
+                });
+            }
+
+            /* --- Touch/swipe navigation --- */
+            setupTouchNav() {
+                let touchStartY = 0;
+                let touchStartX = 0;
+
+                document.addEventListener('touchstart', (e) => {
+                    touchStartY = e.changedTouches[0].screenY;
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                document.addEventListener('touchend', (e) => {
+                    const deltaY = touchStartY - e.changedTouches[0].screenY;
+                    const deltaX = touchStartX - e.changedTouches[0].screenX;
+
+                    if (Math.abs(deltaY) > 50 && Math.abs(deltaY) > Math.abs(deltaX)) {
+                        if (deltaY > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.prevSlide();
+                        }
+                    }
+                }, { passive: true });
+            }
+
+            /* --- Mouse wheel navigation (with debounce) --- */
+            setupWheelNav() {
+                let wheelTimeout = null;
+
+                document.addEventListener('wheel', (e) => {
+                    if (wheelTimeout) return;
+
+                    const isAtTop = window.scrollY === 0;
+                    const isAtBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight - 2;
+
+                    // Only intercept if we're at scroll boundaries
+                    if ((e.deltaY > 0 && isAtBottom) || (e.deltaY < 0 && isAtTop)) {
+                        e.preventDefault();
+                        if (e.deltaY > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.prevSlide();
+                        }
+                        wheelTimeout = setTimeout(() => { wheelTimeout = null; }, 800);
+                    }
+                }, { passive: false });
+            }
+
+            /* --- Progress bar --- */
+            setupProgressBar() {
+                this.progressFill = document.getElementById('progressFill');
+            }
+
+            updateProgressBar() {
+                const progress = ((this.currentIndex + 1) / this.totalSlides) * 100;
+                this.progressFill.style.width = progress + '%';
+            }
+
+            /* --- Navigation dots --- */
+            setupNavDots() {
+                this.navDotsContainer = document.getElementById('navDots');
+                this.navDotsContainer.innerHTML = '';
+
+                for (let i = 0; i < this.totalSlides; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    this.navDotsContainer.appendChild(dot);
+                }
+
+                this.navDots = this.navDotsContainer.querySelectorAll('.nav-dot');
+            }
+
+            updateNavDots() {
+                for (const dot of this.navDots) {
+                    dot.classList.remove('active');
+                }
+                if (this.navDots[this.currentIndex]) {
+                    this.navDots[this.currentIndex].classList.add('active');
+                }
+            }
+
+            /* --- Hash-based navigation --- */
+            setupHashNav() {
+                const hash = window.location.hash;
+                if (hash) {
+                    const el = document.querySelector(hash);
+                    if (el) {
+                        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
+                    }
+                }
+
+                // Update hash on slide change
+                const origGoTo = this.goToSlide.bind(this);
+                this.goToSlide = (index) => {
+                    origGoTo(index);
+                    window.location.hash = this.slides[index].id || '';
+                };
+            }
+
+            /* --- Hide keyboard hint after first interaction --- */
+            hideHintOnInteraction() {
+                const hint = document.getElementById('keyboardHint');
+                let hidden = false;
+
+                const hide = () => {
+                    if (!hidden) {
+                        hint.classList.add('hidden');
+                        hidden = true;
+                    }
+                };
+
+                document.addEventListener('keydown', hide, { once: true });
+                document.addEventListener('touchstart', hide, { once: true });
+                document.addEventListener('wheel', hide, { once: true });
+            }
+
+            /* --- Navigation methods --- */
+            nextSlide() {
+                if (this.currentIndex < this.totalSlides - 1) {
+                    this.goToSlide(this.currentIndex + 1);
+                }
+            }
+
+            prevSlide() {
+                if (this.currentIndex > 0) {
+                    this.goToSlide(this.currentIndex - 1);
+                }
+            }
+
+            goToSlide(index) {
+                if (index >= 0 && index < this.totalSlides && index !== this.currentIndex) {
+                    this.slides[index].scrollIntoView({ behavior: 'smooth' });
+                    this.currentIndex = index;
+                    this.updateNavDots();
+                    this.updateProgressBar();
+                }
+            }
+        }
+
+        // Initialize
+        new SlidePresentation();
+
+        /* ===========================================
+           SELF-WRITING LOVE LETTER (Slide 2)
+           Triggered when the slide scrolls into view
+           =========================================== */
+        (function() {
+            const letterSlide = document.getElementById('slide-1');
+            const textEl = document.getElementById('typewriterText');
+            const cursor = document.getElementById('typewriterCursor');
+            if (!letterSlide || !textEl || !cursor) return;
+
+            const fullText = "My Dearest Энхжин,\n\nOn your special day, I wanted to give you something that comes straight from the heart. Even though I can't be there in person, every word here carries all my love across the miles.\n\nHappy Birthday, my love.\n\nForever yours,\nГанболд ♡";
+
+            let isWriting = false;
+            let charIndex = 0;
+            let timeoutId = null;
+
+            function startWriting() {
+                if (isWriting) return;
+                isWriting = true;
+                cursor.classList.add('active');
+                writeNextChar();
+            }
+
+            function writeNextChar() {
+                if (charIndex >= fullText.length) {
+                    cursor.classList.remove('active');
+                    cursor.classList.add('done');
+                    return;
+                }
+
+                charIndex++;
+                textEl.innerHTML = fullText.substring(0, charIndex).replace(/\n/g, '<br>');
+
+                // Variable speed: linger at punctuation and newlines
+                const ch = fullText[charIndex - 1];
+                const delay = (ch === ',' || ch === '.') ? 100 :
+                              (ch === '\n') ? 180 :
+                              (ch === '♡') ? 300 :
+                              Math.floor(Math.random() * 30 + 30);
+
+                timeoutId = setTimeout(writeNextChar, delay);
+            }
+
+            // Start writing when the slide becomes visible
+            const writerObserver = new IntersectionObserver(function(entries) {
+                for (var i = 0; i < entries.length; i++) {
+                    if (entries[i].isIntersecting && !isWriting) {
+                        // Small delay to let slide entrance animation settle
+                        setTimeout(startWriting, 600);
+                    }
+                }
+            }, { threshold: 0.4 });
+
+            writerObserver.observe(letterSlide);
+        })();
+    </script>
+
+</body>
+</html>
