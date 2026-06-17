@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,7 @@
     <!-- === FONTS === -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet" />
 
     <style>
         /* ===========================================
@@ -37,9 +37,9 @@
             --gold-glow: rgba(212, 165, 116, 0.3);
 
             /* Typography — MUST use clamp() */
-            --font-display: 'Playfair Display', Georgia, serif;
-            --font-script: 'Dancing Script', cursive;
-            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-display: 'Noto Serif', Georgia, serif;
+            --font-script: 'Caveat', 'Noto Sans', cursive;
+            --font-body: 'Noto Sans', -apple-system, sans-serif;
             --title-size: clamp(2rem, 6vw, 5rem);
             --script-size: clamp(1.25rem, 3vw, 2.5rem);
             --subtitle-size: clamp(0.875rem, 1.8vw, 1.25rem);
@@ -1031,8 +1031,26 @@
         .slide.visible .polaroid-2 { transform: rotate(1deg); }
         .slide.visible .polaroid-3 { transform: rotate(-1deg); }
 
+        .polaroid-photo {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            border-radius: 2px;
+            background-size: cover;
+            background-position: center;
+            background-color: #ead6d6;
+            overflow: hidden;
+        }
+
+        .polaroid-photo-1 {
+            background-image: url('image/Alone.jpg');
+        }
+
+        .polaroid-photo-2 {
+            background-image: url('image/Watching me.jpg');
+        }
+
         .polaroid-photo-3 {
-            background: linear-gradient(135deg, #e8b4b8, #d49098, #c07078);
+            background-image: url('image/Together.jpg');
         }
 
         .polaroid-caption {
@@ -1161,6 +1179,83 @@
                 display: none;
             }
         }
+
+        /* ===========================================
+           IPHONE PORTRAIT OPTIMIZATION
+           Targets iPhone 14/14 Pro-style portrait screens.
+           =========================================== */
+        @media (max-width: 430px) and (min-height: 800px) {
+            :root {
+                --slide-padding: clamp(1rem, 5vw, 1.6rem);
+                --content-gap: clamp(0.45rem, 1.6vh, 0.9rem);
+                --element-gap: clamp(0.35rem, 1.2vw, 0.75rem);
+                --title-size: clamp(1.65rem, 10vw, 3rem);
+                --h2-size: clamp(1.25rem, 6vw, 2rem);
+                --body-size: clamp(0.78rem, 3.6vw, 0.98rem);
+                --small-size: clamp(0.62rem, 2.4vw, 0.75rem);
+            }
+
+            .slide-content {
+                padding-bottom: calc(var(--slide-padding) + env(safe-area-inset-bottom));
+            }
+
+            .card,
+            .container,
+            .content-box {
+                max-width: 92vw;
+            }
+
+            .cover-title {
+                line-height: 1.05;
+            }
+
+            .letter-paper {
+                width: min(92vw, 420px);
+                max-height: min(68dvh, 560px);
+                padding: clamp(0.9rem, 4vw, 1.4rem);
+            }
+
+            .typewriter-area {
+                min-height: clamp(140px, 34dvh, 320px);
+            }
+
+            .typewriter-text {
+                font-size: clamp(0.8rem, 4vw, 1.15rem);
+                line-height: 1.65;
+            }
+
+            .distance-message,
+            .intro-message,
+            .closing-message {
+                line-height: 1.65;
+            }
+
+            .polaroid-grid {
+                gap: clamp(0.45rem, 2vw, 0.75rem);
+            }
+
+            .polaroid {
+                width: clamp(105px, 30vw, 155px);
+                padding: clamp(5px, 1.5vw, 8px) clamp(5px, 1.5vw, 8px) clamp(13px, 3vw, 22px) clamp(5px, 1.5vw, 8px);
+            }
+
+            .polaroid-caption {
+                font-size: clamp(0.58rem, 2.6vw, 0.75rem);
+            }
+
+            .nav-dots {
+                right: max(0.45rem, env(safe-area-inset-right));
+            }
+
+            .keyboard-hint {
+                bottom: calc(0.65rem + env(safe-area-inset-bottom));
+                font-size: 0.62rem;
+            }
+
+            .progress-bar {
+                height: 2px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1280,7 +1375,7 @@
             <div class="polaroid-grid">
                 <div class="polaroid polaroid-1 reveal-left" style="transition-delay: 0.3s;">
                     <div class="polaroid-photo polaroid-photo-1"></div>
-                    <p class="polaroid-caption">The moment we met</p>
+                    <p class="polaroid-caption">Most memorable moment</p>
                 </div>
 
                 <div class="polaroid polaroid-2 reveal-scale" style="transition-delay: 0.5s;">
